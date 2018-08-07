@@ -1,0 +1,19 @@
+
+
+1. 选择较高的学习速率(learning rate)。一般情况下，学习速率的值为0.1。但是，对于不同的问题，理想的学习速率有时候会在0.05到0.3之间波动。选择对应于此学习速率的理想决策树数量。XGBoost有一个很有用的函数“cv”，这个函数可以在每一次迭代中使用交叉验证，并返回理想的决策树数量。
+
+2. 对于给定的学习速率和决策树数量，进行决策树特定参数调优(max_depth, min_child_weight, gamma, subsample, colsample_bytree)。在确定一棵树的过程中，我们可以选择不同的参数，待会儿我会举例说明。
+	 max_depth 和 min_weight
+	 	'max_depth':range(3,10,2),
+ 		'min_child_weight':range(1,6,2) 
+	 gamma
+	 	'gamma':[i/10.0 for i in range(0,5)]
+	 subsample 和 colsample_bytree
+	 	'subsample':[i/10.0 for i in range(6,10)],
+ 		'colsample_bytree':[i/10.0 for i in range(6,10)]
+3. xgboost的正则化参数的调优。(lambda, alpha)。这些参数可以降低模型的复杂度，从而提高模型的表现。
+	reg_alpha
+	reg_lambda
+
+4. 降低学习速率，确定理想参数。
+
